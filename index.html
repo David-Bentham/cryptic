@@ -46,52 +46,34 @@ content="width=device-width, initial-scale=1.0">
     <div class="result" id="result"></div>
 
     <script>
-        function caesarCipher(str, shift)
-{
-
-    // Wrap shift within the range of 0-25
-
+        function caesarCipher(str, shift) {
             shift = shift % 26;
             return str.split('').map(char => {
-
-    // Check if character is a letter
-
-                if (char.match(/[a-z]/i))
-{
-
-    // Get character code
-
+                if (char.match(/[a-z]/i)) {
                     let code = char.charCodeAt(0);
-
-    // Uppercase letters
-                    
                     if (code >= 65 && code <= 90) {
                         return String.fromCharCode(((code - 65 + shift) % 26) + 65);
-                                                    }
+                        } else if (code >= 97 && code <=122) {
+                            return String.fromCharCode(((code - 97 + shift) % 26) +97);
+                        }
+                    }
+                    return char;
+                }).join('');
+            }                                       
+        
+            function encrypt() {
+                let message = document.getElementById('message').value;
+                let shift = parseInt(document.getElementById('shift').value);
+                let encrypted = caesarCipher(message, shift);
+                document.getElementById('result').innerText; "Encrypted Message: " + encrypted;
+            }
 
-    // Lowercase letters
-                                                    else if (code >= 97 && code <=122) {
-                                                        return String.fromCharCode(((code - 97 + shift) % 26) +97);
-                                                                                    }
-                                                                                }
-                                                                                return char;
-                                                                    }).join('');
-                                                                }
-                                                                function encrypt() {
-                                                                    let message = document.getElementById('message').value;
-                                                                    let shift = parseInt(document.getElementById('shift').value);
-                                                                    let encrypted = caesarCipher(message, shift);
-
-                                                                    document.getElementById('result').innerText; "Encrypted Message: " + encrypted;
-                                                                }
-
-                                                                function decrypt() {
-                                                                    let message = document.getElementById('message').value;
-                                                                    let shift = parseInt(document.getElementById('shift').value);
-                                                                    let decrypted = caesarCipher(message, -shift);
-                                                                    
-                                                                    document.getElementById('result').innerText; "Decrypted Message: " + decrypted;
-                                                                }
-                                                </script>
+            function decrypt() {
+                let message = document.getElementById('message').value;
+                let shift = parseInt(document.getElementById('shift').value);
+                let decrypted = caesarCipher(message, -shift);    
+                document.getElementById('result').innerText; "Decrypted Message: " + decrypted;
+            }
+        </script>
 </body>
 </html>
