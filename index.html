@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caesar Cipher</title>
     <style>
         body {
@@ -37,12 +36,17 @@ content="width=device-width, initial-scale=1.0">
     <h1>Caesar Cipher</h1>
     <label for="message">Message:</label>
     <input type="text" id="message" placeholder="Enter your message here">
-<label for="shift">Shift (number of positions):</label>
+    
+    <label for="shift">Shift (number of positions):</label>
     <input type="number" id="shift" placeholder="Enter shift value" value="1">
     
     <button onclick="encrypt()">Encrypt</button>
     <button onclick="decrypt()">Decrypt</button>
 
+    <hr>
+
+    <label for="encrypted">Encrypted Message</label>
+    <input id="encrypted" type="text" value="" readonly>
     <div class="result" id="result"></div>
 
     <script>
