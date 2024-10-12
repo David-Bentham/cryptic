@@ -60,6 +60,7 @@
         let originalMessage = messageInput.value;
 
         messageInput.addEventListener("input", characterEntered, false);
+        shiftInput.addEventListener("input", numberEntered, false);
 
         function characterEntered(e) {
             // Ensure only lowercase letters
@@ -71,7 +72,8 @@
 
         function startEncryption() {
             let encryptedMessage = "";
-            let shift = 1;
+            let shift = shiftInput.value ? Number(shiftInput.value) : 0;
+            console.log(shift);
 
             for (letter of originalMessage) {
                 encryptedMessage += shiftLetter(letter, shift);
