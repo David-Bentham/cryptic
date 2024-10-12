@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caesar Cipher</title>
+    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,52 +34,33 @@
         }
     </style>
 </head>
+
 <body>
-    <h1>Caesar Cipher</h1>
-    <label for="message">Message:</label>
-    <input type="text" id="message" placeholder="Enter your message here">
+    <div class="mainContainer">
+        <h1>Caesar Cipher</h1>
+        
+        <label for="message">Message:</label>
+        <input type="text" id="message" placeholder="Enter your message here">
+        
+        <label for="shift">Shift (number of positions):</label>
+        <input type="number" id="shift" placeholder="Enter shift value" value="1">
+        
+        <hr>
     
-    <label for="shift">Shift (number of positions):</label>
-    <input type="number" id="shift" placeholder="Enter shift value" value="1">
-    
-    <button onclick="encrypt()">Encrypt</button>
-    <button onclick="decrypt()">Decrypt</button>
-
-    <hr>
-
-    <label for="encrypted">Encrypted Message</label>
-    <input id="encrypted" type="text" value="" readonly>
-    <div class="result" id="result"></div>
+        <label for="encrypted">Encrypted Message</label>
+        <input id="encrypted" type="text" value="" readonly>
+        
+    </div>
 
     <script>
-        function caesarCipher(str, shift) {
-            shift = shift % 26;
-            return str.split('').map(char => {
-                if (char.match(/[a-z]/i)) {
-                    let code = char.charCodeAt(0);
-                    if (code >= 65 && code <= 90) {
-                        return String.fromCharCode(((code - 65 + shift) % 26) + 65);
-                        } else if (code >= 97 && code <=122) {
-                            return String.fromCharCode(((code - 97 + shift) % 26) +97);
-                        }
-                    }
-                    return char;
-                }).join('');
-            }                                       
-        
-            function encrypt() {
-                let message = document.getElementById('message').value;
-                let shift = parseInt(document.getElementById('shift').value);
-                let encrypted = caesarCipher(message, shift);
-                document.getElementById('result').innerText; "Encrypted Message: " + encrypted;
-            }
+        let originalMessage = "abcdefg";
+        let shift = 1;
 
-            function decrypt() {
-                let message = document.getElementById('message').value;
-                let shift = parseInt(document.getElementById('shift').value);
-                let decrypted = caesarCipher(message, -shift);    
-                document.getElementById('result').innerText; "Decrypted Message: " + decrypted;
-            }
+        function startEncryption() {
+            console.log("Something happened!");
+        }
+        startEncryption();
+        
         </script>
 </body>
 </html>
