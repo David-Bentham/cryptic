@@ -57,7 +57,17 @@
         let shiftInput = document.querySelector("#shift");
         let encryptedInput = document.querySelector("#encrypted");
         
-        let originalMessage = "abcdefg";
+        let originalMessage = messageInput.value;
+
+        messageInput.addEventListener("input", characterEntered, false);
+
+        function characterEntered(e) {
+            // Ensure only lowercase letters
+            originalMessage = e.target.value;
+            originalMessage = originalMessage.toLowerCase();
+            originalMessage = originalMessage.replace(/[^a-z]/, '');
+
+            e.target.value = originalMessage;
 
         function startEncryption() {
             let encryptedMessage = "";
