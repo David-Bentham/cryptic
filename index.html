@@ -33,7 +33,6 @@
         }
         .result {
             margin-top: 20px;
-            font-size: 1.2em;
         }
     </style>
 </head>
@@ -71,31 +70,30 @@
         let originalMessage = messageInput.value;
 
         messageInput.addEventListener("input", characterEntered, false);
-        shiftInput.addEventListener("input", numberEntered, false);
+        shiftInput.addEventListener("input", startEncryption, false);
 
         function characterEntered(e) {
             // Ensure only lowercase letters
             originalMessage = e.target.value;
             originalMessage = originalMessage.toLowerCase();
-            originalMessage = originalMessage.replace(/[^a-z]/, '');
+            originalMessage = originalMessage.replace(/[^a-z]/g, '');
 
             e.target.value = originalMessage;
+            startEncryption();
+        }
 
-    // TO DO. Move this function above character entered. 
-    // TO DO. Set up github desktop to allow debugging!!! 
         function startEncryption() {
             let encryptedMessage = "";
             let shift = shiftInput.value ? Number(shiftInput.value) : 0;
             console.log(shift);
 
-            for (letter of originalMessage) {
+            for (let letter of originalMessage) {
                 encryptedMessage += shiftLetter(letter, shift);
             }
             
             console.log(encryptedMessage);
             encryptedInput.value = encryptedMessage;
         }
-        startEncryption();
 
         function shiftLetter(letter, shift) {
             let newLetter = "";
@@ -104,7 +102,7 @@
             let newLetterCode = letterCode + shift;
 
             if (newLetterCode < 97) {
-                newLetterCode += 26);
+                newLetterCode += 26;
             } else if (newLetterCode > 122) {
                 newLetterCode -= 26;
             }
@@ -113,6 +111,6 @@
 
             return newLetter;
         }
-        </script>
+    </script>
 </body>
 </html>
